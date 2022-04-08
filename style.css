@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(48, 48, 48);
+}
+
+textarea{
+  resize: none;
+  background-color: black;
+  color:olive
+}
+button{
+  background-color: black;
+  color: darkmagenta;
+}
+/* body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+} */
