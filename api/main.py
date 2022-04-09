@@ -1,9 +1,15 @@
-import json
+# import json
+# from fastapi.encoders import jsonable_encoder
 from fastapi import FastAPI
-from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-# import pytemplog
+from pydantic import BaseModel
+import subprocess
+class Item(BaseModel):
+    oldtex: str
+    newtex: str
+
 app = FastAPI()
+
 
 origins = [
     # "http://192.168.1.200:8000",
@@ -20,16 +26,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/latexdiff")
-async def latexdiff(data):
-    difftex = "test nonsense"
-    return difftex
+async def latexdiff(item:Item):
+    
+    f = open("old.tex", "w+")
+    f.write(item.oldtex)
+    f.close()
+    f = open("new.tex", "w+")
+    f.write(item.newtex)
+    f.close()
 
-# @app.get("/dict")
-# async def todict():
-#     templog_dict=pytemplog.combine2dict()
-#     return templog_dict
-
-# @app.get("/")
-# async def root():
-#     return {"message": "Test success"}
+    difftex = subprocess.run(["latexdiff", "old.tex", "new.tex"], \
+        stdout=subprocess.PIPE).stdout.decode('utf-8')
+    out = {'text': difftex}
+    print(out)
+    return out

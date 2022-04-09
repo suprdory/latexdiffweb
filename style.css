@@ -1,18 +1,23 @@
 body {
     background-color: rgb(48, 48, 48);
+    color:darkgoldenrod
 }
 
 textarea{
-  resize: none;
+  resize:both;
   background-color: black;
   color:olive
 }
 button{
   background-color: black;
   color: darkmagenta;
+  padding: 5px;
 }
-/* body {
-  margin: 0;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.05);
-} */
+/* div{margin: 0px 0px 0px 0px;} */
+
+a:link{
+  color: rgb(184, 140, 31); 
+}
+a:visited{
+  color: rgb(185, 149, 57); 
+}

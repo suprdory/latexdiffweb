@@ -3,17 +3,28 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Latexdiff Web</title>
+    <title>LaTeX Diff Web</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <textarea id="old" name="old" rows="20" cols="50" placeholder="old .tex"></textarea>
-    <textarea id="new" name="new" rows="20" cols="50" placeholder="new .tex"></textarea>
+    <h1>LaTeX diff web tool</h1>
+
+    <p> Takes an old and a new .tex file and returns a marked up difference using <a href="https://ctan.org/pkg/latexdiff">latexdiff</a> behind the scenes. Idea borrowed from <a href=https://3142.nl/latex-diff>3142.nl</a> one day when that very useful site was down.</p>
+    <!-- <textarea id="old" name="old" rows="5" cols="50" placeholder="old .tex">this is the 'old' \citep{old1809} text $^{wow}$</textarea> -->
+    <textarea id="old" name="old" rows="5" cols="50"
+        placeholder="old .tex"></textarea>
+
+    <br>
+    <!-- <textarea id="new" name="new" rows="5" cols="50" placeholder="new .tex">this is the "new" \citep{new2202} text</textarea> -->
+    <textarea id="new" name="new" rows="5" cols="50"
+        placeholder="new .tex"></textarea>
+
     <br>
     <button id="go" name="go">Go!</button>
+    <div></div>
     <br>
-    <textarea id="diff" name="diff" rows="20" cols="50" placeholder="diff .tex"></textarea>
+    <textarea id="diff" name="diff" rows="5" cols="50" placeholder="diff .tex"></textarea>
 </body>
 <script src="latexdiff.js"></script>
 </html>

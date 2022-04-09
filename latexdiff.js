@@ -2,34 +2,35 @@
 const button = document.getElementById("go");
 
 button.addEventListener('click',go);
-
+difftex = document.getElementById('diff')
 function go() {
     oldtex = document.getElementById('old').value
     newtex = document.getElementById('new').value
-    difftex=document.getElementById('diff')
-    difftex.value=oldtex+newtex
+    
+    // difftex.value=oldtex+newtex
     
     var url = 'https://meow.suprdory.com:8002/latexdiff'
-    const data = {
+    const indata = {
         oldtex: oldtex,
-        newtex: newtex
+        newtex: newtex,
     };
-
+    // console.log(data)
     fetch(url, {
-        method: 'POST', // or 'PUT'
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(indata),
     })
         .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
+        .then(data => updateDoc(data))
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Error:', error)
         });
-
+}
+function updateDoc(data){
+    console.log(data)
+    difftex.value=data.text
 }
 
 
