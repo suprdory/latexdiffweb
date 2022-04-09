@@ -1,0 +1,11 @@
+[Unit]
+Description=uvicorn server for latexdiffwebapi
+
+[Service]
+Restart=on-failure
+RestartSec=5s
+WorkingDirectory=/home/suprdory/projects/latexdiffweb/api
+ExecStart=/home/suprdory/projects/latexdiffweb/api/.venv/bin/uvicorn main:app --reload --port 8002 --host 192.168.1.200 --ssl-keyfile=/etc/letsencrypt/live/meow.suprdory.com/privkey.pem --ssl-certfile=/etc/letsencrypt/live/meow.suprdory.com/fullchain.pem
+
+[Install]
+WantedBy=multi-user.target
